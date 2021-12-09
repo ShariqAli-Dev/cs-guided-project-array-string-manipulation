@@ -21,5 +21,19 @@ Explanation:
 There is no index that satisfies the conditions in the problem statement.
 """
 def pivot_index(nums):
-    # Your code here
+    if len(nums) == 1:
+        return 0
+    elif len(nums) == 0:
+        return 1;
 
+    left_sum = 0
+    right_sum = sum(nums)
+
+    for (i,num) in enumerate(nums):
+        right_sum = right_sum - num
+        if left_sum == right_sum:
+            return i   
+        left_sum += num
+    return -1
+
+print(pivot_index([1,7,3,6,5,6]))
